@@ -30,8 +30,8 @@ import java.nio.charset.Charset;
  * @version 1.0
  * @since 2017年6月22日 下午11:22:04
  */
-public class CxbGsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
-    private static final Logger logger = LoggerFactory.getLogger(CxbGsonRequestBodyConverter.class);
+public class GsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
+    private static final Logger logger = LoggerFactory.getLogger(GsonRequestBodyConverter.class);
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");
     private static final Charset UTF_8 = Charset.forName("UTF-8");
@@ -39,7 +39,7 @@ public class CxbGsonRequestBodyConverter<T> implements Converter<T, RequestBody>
     private final Gson gson;
     private final TypeAdapter<T> adapter;
 
-    CxbGsonRequestBodyConverter(Gson gson, TypeAdapter<T> adapter) {
+    GsonRequestBodyConverter(Gson gson, TypeAdapter<T> adapter) {
         this.gson = gson;
         this.adapter = adapter;
     }
