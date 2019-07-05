@@ -12,5 +12,5 @@ public interface RiskComplexApi {
     @GET("risk/v3/risk_complex")
     Call<GxbResponse<String>> queryComplexData(@Query("appId") String appId, @Query("authItem") String authItem,
                                                @Query("sequenceNo") String sequenceNo, @Query("timestamp") String timestamp,
-                                               @Query("sign") String sign, @Query("bizContent") String bizContent);
+                                               @Query("sign") String sign, @Query(value ="bizContent",encoded = true) String bizContent);
 }
