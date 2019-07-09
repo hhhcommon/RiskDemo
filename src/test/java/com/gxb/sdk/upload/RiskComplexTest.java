@@ -2,8 +2,11 @@ package com.gxb.sdk.upload;
 
 import com.google.gson.Gson;
 import com.gxb.sdk.api.RiskComplexApi;
+import com.gxb.sdk.bean.complex.ComplexRpt;
+import com.gxb.sdk.bean.complex.ecommerce.ComplexRiskRpt;
 import com.gxb.sdk.client.GxbApiFactory;
-import com.gxb.sdk.param.*;
+import com.gxb.sdk.param.GxbResponse;
+import com.gxb.sdk.param.ThreeElement;
 import com.gxb.sdk.util.SignUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -51,9 +54,9 @@ public class RiskComplexTest {
         long timestamp = System.currentTimeMillis();
         String sign = SignUtils.getSign(appId, appSercet, authItem, timestamp, sequenceNo);
         RiskComplexApi riskComplexApi = gxbApiFactory.newApi(RiskComplexApi.class);
-        Response<GxbResponse<String>> response =
+        Response<GxbResponse<ComplexRpt>> response =
                 riskComplexApi.queryComplexData(appId, authItem, sequenceNo, timestamp+"", sign, bizContent).execute();
-        logger.info("调用结果: " + response);
+        logger.info("调用结果: " + response.body());
     }
 
     @Test
